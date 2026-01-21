@@ -19,7 +19,9 @@ Overview of the script's functionality:
 4. Print the value of that variable
 
 Running the script:
+cd <directory containing script/git clone directory>
 sudo apt update && sudo apt install perl (if not installed)
-perl sudo_ct.pl
+chmod +x sudo_ct.pl
+./sudo_ct.pl
 The script will include your 2 sudo usages, but I'd recommend to never exclude  these from the returned number
 to keep the baseline consistent.
