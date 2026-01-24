@@ -25,3 +25,33 @@ chmod +x sudo_ct.pl
 ./sudo_ct.pl
 The script will include your 2 sudo usages, but I'd recommend to never exclude  these from the returned number
 to keep the baseline consistent.
+
+SNMP support - 
+1. run `sudo apt update`
+2. run `sudo apt install libsnmp-perl snmpd snmp`
+3. add `extend file-check ~/Desktop/CPSC222/Project1/sudo_ct.pl` to /etc/snmp/snmpd.conf (snmpd.conf)
+4. run `sudo systemctl restart snmpd`
+5. run `snmpwalk -v2c -c public localhost .1.3.6.1.4.1.8072.1.3.2`
+   something like this should be returned: iso.3.6.1.4.1.8072.1.3.2 = No more variables left in this MIB View
+   (It is past the end of the MIB tree)
+6. Add `view systemonly included .1.3.6.1.4.1.8072` (this might be slightly different for you depending on output
+   of previous command) to `view` section of snmpd.conf
+7. run `chmod +x /home/{user}/Desktop/CPSC222/Project1/sudo_ct.pl`
+8. run `chmod +x /home/{user} /home/{user}/Desktop /home/{user}/Desktop/CPSC222 /home/{user}/Desktop/CPSC222/Project1`
+9. Run this to make sure the script and snmpd can read the log that provides the sudo count to the perl script.
+   `sudo setfacl -m u:Debian-snmp:r /var/log/auth.log`
+10. TEST -
+   a. `snmpwalk -v2c -c public localhost .1.3.6.1.4.1.8072.1.3.2`
+   b. sudo apt update
+   c. run the snmpwalk again, observe the numbers that change. That's the count. More simply, this should be
+      the very last line of the output
+   Example: 
+    Output pre-update: 
+     [13 lines of useless info]
+     iso.3.6.1.4.1.8072.1.3.2.4.1.2.10.102.105.108.101.45.99.104.101.99.107.1 = STRING: "48"
+    Post-update
+     [13 lines of useless info]
+     iso.3.6.1.4.1.8072.1.3.2.4.1.2.10.102.105.108.101.45.99.104.101.99.107.1 = STRING: "49"
+  NOTE - You can also pass the specific OID to make the output cleaner:
+       `snmpget -v2c -c public localhost .1.3.6.1.4.1.8072.1.3.2.3.1.1.10.102.105.108.101.45.99.104.101.99.107`
+       Output: iso.3.6.1.4.1.8072.1.3.2.3.1.1.10.102.105.108.101.45.99.104.101.99.107 = STRING: "49"
