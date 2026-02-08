@@ -1,0 +1,11 @@
+[Unit]
+Description=Securely broadcast user and groups lists over HTTP
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/dominic/Desktop/CPSC222/Project2/run.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

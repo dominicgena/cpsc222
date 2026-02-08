@@ -1,23 +1,36 @@
+--- PREPARATION ---
+ Run the following in project root:
+  Install curl: `sudo apt install curl`
+  Run `chmod +x ./*.sh` to make shell scripts executable 
 
+--- LAUNCH SERVER ---
+ In project root, run `./run.sh`
+ This shell script activates the venv if not already active, verifies flask installation, then starts the server
 
-build:
-run (in project root):
- Update: `sudo apt update`
- Upgrade: `sudo apt upgrade`
- Install venv for dependency isolation: `sudo apt install python3-venv`
- Initialize the venv: `python3 -m venv venv`
- Activate the virtual environment: `source /venv/bin/activate`
- Install flask dependency for server: `pip install flask`
- `flask --version` to confirm installation
- Install curl: `sudo apt install curl` (Do this outside the venv)
- Start the server: `flask run` (from inside the venv)
- Inside or outside of the venv, in the project directory, run `chmox +x ./*.sh` to make shell scripts executable 
- To get user data, run ./users.sh. For groups, run ./groups.sh
+--- METHOD CLI ACCESS ---
+Run
+ `./users.sh <username> <password>` OR `./groups.sh <username> <password>`
+ Explanation of shell scripts:
+   Below: curl lets you view webpage contents from in terminal. -s tells output to be silent of unnecessary output,
+   -o specifies where to map the output of this command to. By mapping it to /dev/null, we tell the output to go
+   nowhere because it isn't necessary for logging in.
+   `curl -s -o /dev/null "127.0.0.1:3000/api/users"`
+   
+   Below: -L tells curl how to handle redirects. username=$1&password=$2 specifies the password to be sent to
+   the login form using the -d option. sed ... | sed ... formats output to only show things between pre tags,
+   so we only see desired output rather than a full html page. The | (pipe) sends the standard output (stdout)
+   from the first sed command as input for the second sed command to chain them.
+   `curl -s -L -d "username=$1&password=$2" "127.0.0.1:3000/api" | sed -n '/<pre>/,/<\/pre>/p' |` 
+    sed -e 's/<[^>]*>//g'`
 
- Method access shell script contents and explanation: `curl -s -d "username=test&password=abcABC123" http://127.0.0.1:5000/api && \curl -s http://127.0.0.1:5000/api/{METHOD} | tr -d '\n\r' | grep -oP '(?<=<h1>)[^<]+'`
-  Explanation: curl returns webpage contents in terminal. -s tells it to be quiet, -d tells it which POST data to
-   send, "username=...&password=..." represent the actual data to send. http://... is sign-in url that receives post 
-   data. The command is then repeated but this time for the {METHOD} page, which would be users or groups.
-   `tr -d '\n\r' | grep -oP '(?<=<h1>)[^<]+'` strips the page's contents to only contain the necessary data 
-   tr deletes the returns from the html (there shouldn't be any, but just to be safe). grep... filters output to only
-   show contents of h1 tags, which is where the data lives for the requested method.
+--- SET UP RUN ON STARTUP ---
+Run from in project directory:
+ `mv usrgrprunsrv.service /etc/systemd/system/usrgrprunsrv.service`
+ `sudo systemctl daemon-reload`
+ `sudo systemctl enable usrgrprunsrv.service`
+ [Test service]
+ `sudo systemctl start myscript.service`
+ `sudo systemctl status myscript.service`
+ [View logs if needed]
+ journalctl -u myscript.service
+ Reboot and confirm it runs automatically

@@ -1,4 +1,8 @@
+import grp
+import pwd
+import os
 from flask import Flask, request, jsonify, render_template, redirect, url_for
+#subprocess to run linux shell commands from in python, and shlex to parse commands into subprocess format
 
 """
 Given the proper username and password in an HTML form, this script will
@@ -13,6 +17,8 @@ global goal
 session = None
 session_valid = False
 
+# Do not bother showing a favicon for the page
+
 @app.route('/favicon.ico')
 def favicon():
     return '', 204
@@ -26,8 +32,9 @@ def handle_login():
         entered_username = request.form.get('username')
         entered_password = request.form.get('password')
         if(entered_username == 'test' and entered_password == 'abcABC123'):
+            global session_valid
             session_valid = True
-            return render_template(f'{goal}.html') # returns user to original location before login redirect
+            return redirect(url_for(goal))
 
         else:
             return render_template('login.html')
@@ -41,7 +48,9 @@ def users():
     global goal
     goal = 'users'
     if(session_valid):
-        return 'Session valid! Hello from users!'
+        user_list = [user.pw_name for user in pwd.getpwall() if '/home' in user.pw_dir]
+        content = "\n".join(user_list)
+        return render_template('users.html', content=content)
     else:
         return redirect('/api')
 
@@ -50,9 +59,13 @@ def groups():
     global goal
     goal = 'groups'
     if(session_valid):
-        return 'Session valid! Hello from groups!'
+        group_list = []
+        for group_entry in grp.getgrall():
+            group_list.append(group_entry.gr_name)
+        return render_template('groups.html', content=str("\n".join(group_list)))
     else:
         return redirect('/api')
 
-if __name__ == '__name__':
-    app.run(host='127.0.0.1')
+if __name__ == '__main__':
+    print(get_users())
+    app.run(debug=True, host='127.0.0.1')
