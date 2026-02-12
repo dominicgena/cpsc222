@@ -2,12 +2,13 @@ import grp
 import pwd
 import os
 from flask import Flask, request, jsonify, render_template, redirect, url_for
-#subprocess to run linux shell commands from in python, and shlex to parse commands into subprocess format
 
 """
 Given the proper username and password in an HTML form, this script will
 return a list of the system's users and groups
 """
+
+# tell flask it's running behind a reverse proxy
 
 # create a flask instance, retrieving resources from the flask ('__name__') module
 app = Flask(__name__)
@@ -22,6 +23,11 @@ session_valid = False
 @app.route('/favicon.ico')
 def favicon():
     return '', 204
+
+@app.route('/hello', methods=['GET'])
+def hello_world():
+    return render_template('users.html', content='Hello, world')
+
 
 @app.route('/api', methods=['GET','POST'])
 def handle_login():
@@ -68,4 +74,4 @@ def groups():
 
 if __name__ == '__main__':
     print(get_users())
-    app.run(debug=True, host='127.0.0.1')
+    app.run(debug=True, host='127.0.0.1', port=3000, debut=True)

@@ -1,11 +1,10 @@
 --- PREPARATION ---
  Run the following in project root:
   Install curl: `sudo apt install curl`
-  Run `chmod +x ./*.sh` to make shell scripts executable 
+  `chmod +x ./*.sh` to make shell scripts executable 
 
 --- LAUNCH SERVER ---
- In project root, run `./run.sh`
- This shell script activates the venv if not already active, verifies flask installation, then starts the server
+ In project root, run `./run.sh` to start server
 
 --- METHOD CLI ACCESS ---
 Run
@@ -34,3 +33,6 @@ Run from in project directory:
  [View logs if needed]
  journalctl -u myscript.service
  Reboot and confirm it runs automatically
+
+--- APACHE PROXY SETUP ---
+Reference: https://plainenglish.io/blog/how-to-securely-deploy-flask-with-apache-in-a-linux-server-environment
