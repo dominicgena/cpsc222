@@ -22,9 +22,6 @@ Run
    `curl -s -L -d "username=$1&password=$2" "127.0.0.1:3000/api" | sed -n '/<pre>/,/<\/pre>/p' |` 
     sed -e 's/<[^>]*>//g'`
 
---- SET UP RUN ON STARTUP ---
-Run from in project directory:
-
 --- APACHE PROXY SETUP ---
 Reference: https://plainenglish.io/blog/how-to-securely-deploy-flask-with-apache-in-a-linux-server-environment
 Rename the project folder to usrgrpsrv or refactor usrgrpsrv.conf as needed for correct file paths. Create a python virtual environment with the same name and activate it
