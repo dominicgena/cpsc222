@@ -1,0 +1,96 @@
+2026-02-16 19:23:03,483 Exception on /api [POST]
+Traceback (most recent call last):
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/app.py", line 45, in handle_login
+    return redirect(url_for(goal))
+                    ^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 1068, in url_for
+    if endpoint[:1] == ".":
+       ~~~~~~~~^^^^
+TypeError: 'NoneType' object is not subscriptable
+2026-02-16 19:25:15,326 Exception on /api [POST]
+Traceback (most recent call last):
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/app.py", line 45, in handle_login
+    return redirect(url_for(goal))
+                    ^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 1068, in url_for
+    if endpoint[:1] == ".":
+       ~~~~~~~~^^^^
+TypeError: 'NoneType' object is not subscriptable
+2026-02-16 19:25:27,482 Exception on /api [POST]
+Traceback (most recent call last):
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/app.py", line 45, in handle_login
+    return redirect(url_for(goal))
+                    ^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 1068, in url_for
+    if endpoint[:1] == ".":
+       ~~~~~~~~^^^^
+TypeError: 'NoneType' object is not subscriptable
+2026-02-16 19:26:29,800 Exception on /api [POST]
+Traceback (most recent call last):
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/app.py", line 45, in handle_login
+    return redirect(url_for(goal))
+                    ^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/helpers.py", line 239, in url_for
+    return current_app.url_for(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/html/usrgrpsrv/usrgrpsrv/lib/python3.12/site-packages/flask/app.py", line 1068, in url_for
+    if endpoint[:1] == ".":
+       ~~~~~~~~^^^^
+TypeError: 'NoneType' object is not subscriptable
