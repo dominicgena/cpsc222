@@ -40,10 +40,10 @@
 
   echo "<td style='padding: 12px;'>" . $name . "</td>";
   echo "<td style='padding: 12px;'>" . $hoursWorked . "</td>";
-  echo "<td style='padding: 12px;'>" . $payRate . "</td>";
-  echo "<td style='padding: 12px;'>" . $grossPay . "</td>";
-  echo "<td style='padding: 12px;'>" . $netPay . "</td>";
-  echo "<td style='padding: 12px;'>" . $taxBracket . "</td>";
+  echo "<td style='padding: 12px;'>" . "$" . number_format($payRate, 2, '.', '') . "</td>";
+  echo "<td style='padding: 12px;'>" . "$" . number_format((double) $grossPay, 2, '.', '') . "</td>";
+  echo "<td style='padding: 12px;'>" . "$" . number_format((double) $netPay, 2, '.', '') . "</td>";
+  echo "<td style='padding: 12px;'>" . $taxBracket . "%" . "</td>";
   echo "<td style='padding: 12px;'>" . "Federal: " . $fedWitholding . "%" . "<br>" . "State: " . $stWitholding . "%" . "<br>" . "Total: " . $totalDeduct . "%" . "</td>";
   echo "</table>"
 ?>
