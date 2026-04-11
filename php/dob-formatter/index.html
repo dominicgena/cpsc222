@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>Chapters 7 & 12 - Date Formatter</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <form method="POST" action="format.php">
+            <h1>Birthdate Formatter</h1>
+            <table style="border: 3px black solid; width: 30vw;padding:4px;">
+                <tr>
+                    <th style="padding:5px 10px 5px 20px; border:3px gray double;">Month</th>
+                    <th style="padding:5px 10px 5px 20px; border:3px gray double;">Day</th>
+                    <th style="padding:5px 10px 5px 20px; border:3px gray double;">Year</th>
+                    <th style="padding:5px 10px 5px 20px; border:3px gray double;">Hour</th>
+                    <th style="padding:5px 10px 5px 20px; border:3px gray double;">Minute</th>
+                    <th style="padding:5px 10px 5px 20px; border:3px gray double;">AM/PM</th>
+                </tr>
+
+                <tr align="center">
+                    <td style="border:3px gray double;">
+                        <select name="month" style="width:100%;">
+                            <?php
+                                for($x = 1; $x <=12; $x++) {
+                                    $monthNum = strval($x);
+                                    if(strlen($monthNum) == 1) { $monthNum = "0" . $monthNum; }// put leading 0 if 1 digit
+                                    $monthName = date("F", mktime(0, 0, 0, $monthNum, 1));// format into name
+                                    echo "<option>" . $monthName . "</option>";// add name as option
+                                }
+                            ?>
+                        </select>
+                    </td>
+                    <td style="border:3px gray double;">
+                        <select name="day" style="width:100%;">
+                            <?php
+                                for($x = 1; $x <=31; $x++) {
+                                    echo "<option>" . $x . "</option>";
+                                }
+                            ?>
+                        </select>
+                    </td>
+                    <td style="border:3px gray double;">
+                        <select name="year" style="width:100%;">
+                            <?php
+                                $thisYear = date("Y");
+                                $start = round($thisYear-130, -2);
+                                for($x=$start; $x<=$thisYear; $x++) {
+                                    echo "<option>" . $x . "</option>";
+                                }
+                            ?>
+                        </select>
+                    </td>
+                    <td style="border:3px gray double;">
+                        <select name="hour" style="width:100%;">
+                            <?php
+                                for($x=1; $x<=12; $x++) {
+                                    echo "<option>" . $x . "</option>";
+                                }
+                            ?>
+                        </select>
+                    </td>
+                    <td style="border:3px gray double;">
+                        <select name="minute" style="width:100%;">
+                            <?php
+                                for($x=0; $x<=59; $x++) {
+                                    if($x < 10) echo "<option>" . "0" . (string) $x . "</option>";
+                                    else echo "<option>" . $x . "</option>";
+                                }
+                            ?>
+                        </select>
+                    </td>
+                    <td style="border:3px gray double;">
+                        <select name="meridiem" style="width:100%;">
+                            <option>AM</option><option>PM</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 10px;border:3px gray double;">
+                        <input type="submit" value="Format Date" style="box-shadow: 0 0 0 2px rgba(100,100,100,.5);"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
