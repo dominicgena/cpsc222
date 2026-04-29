@@ -21,11 +21,9 @@
           <tr>
             <td><label for="last-name">Last name</label></td><td><input name="lname" type="text" id="last-name"></td>
           </tr>
-
           <tr>
             <td><label for="major">Major</label></td><td><input name="major" type="text" id="major"></td>
           </tr>
-
           <tr>
             <td><label for="favorite-language">Favorite Programming Language</label></td><td><input name="flang" type="text" id="favorite-language"></td>
           </tr>
@@ -34,9 +32,6 @@
           </tr>
           <tr><td><input type="submit"></td></tr>
         </table>
-        
-        
-        
       </form>
   </body>
 </html>
