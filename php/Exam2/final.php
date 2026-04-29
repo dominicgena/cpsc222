@@ -67,7 +67,7 @@ function show_login() {
             </div>
             <div class=\"input-containers\" id=\"password-container\">
                 <label for=\"pw-in\"><pre>Password </pre></label>
-                <input name=\"password\" id=\"pw-in\" type=\"text\">
+                <input name=\"password\" id=\"pw-in\" type=\"password\">
             </div>
             <div class=\"input-containers\" id=\"submit\">
                 <input type=\"submit\" value=\"login\">
